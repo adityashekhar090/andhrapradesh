@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andhra Pradesh: Food Culture and Tradition</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6c7b;
+      --paper: #fffaf0;
+      --leaf: #2f7d4f;
+      --chilli: #c83f31;
+      --turmeric: #f0b429;
+      --sea: #2364aa;
+      --line: rgba(31, 41, 51, 0.14);
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(240, 180, 41, 0.22), transparent 32rem),
+        linear-gradient(180deg, #fffaf0 0%, #f4fbf7 52%, #fffaf0 100%);
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(17, 24, 39, 0.82), rgba(17, 24, 39, 0.24)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Pulihora.jpg") center/cover;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 28%;
+      background: linear-gradient(0deg, var(--paper), transparent);
+    }
+
+    .hero {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto 7rem;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.35rem 0.8rem;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 1.2rem 0 1rem;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    main {
+      width: min(1100px, calc(100% - 32px));
+      margin: -3.5rem auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .credit {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+      margin-bottom: 2.5rem;
+    }
+
+    .credit div {
+      background: white;
+      padding: 1rem;
+    }
+
+    .credit span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .credit strong {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 2.2rem 0;
+    }
+
+    h2 {
+      margin: 0 0 0.55rem;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .image-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .carousel {
+      position: relative;
+      min-height: 430px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #111827;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 900ms ease, transform 1200ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(17, 24, 39, 0.72);
+      color: white;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+    }
+
+    .slide-caption strong {
+      display: block;
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .slide-caption span {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .dots {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      gap: 0.45rem;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 0.7rem;
+      height: 0.7rem;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.52);
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: white;
+    }
+
+    .facts {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .fact {
+      border-left: 5px solid var(--leaf);
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 10px 26px rgba(31, 41, 51, 0.08);
+    }
+
+    .fact:nth-child(2) {
+      border-left-color: var(--chilli);
+    }
+
+    .fact:nth-child(3) {
+      border-left-color: var(--sea);
+    }
+
+    .fact h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .fact p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(31, 41, 51, 0.08);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card div {
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .message {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem;
+      background: #173f35;
+      color: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2.5rem;
+    }
+
+    .message img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .message p {
+      margin: 0.8rem 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .credit,
+      .image-stage,
+      .cards,
+      .message {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        margin-top: -2.5rem;
+      }
+
+      .carousel {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        min-height: 86vh;
+      }
+
+      .hero {
+        margin-bottom: 5.5rem;
+      }
+
+      .credit div,
+      .message {
+        padding: 0.9rem;
+      }
+
+      .carousel {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <span class="eyebrow">Food, Festivals and Heritage</span>
+      <h1>Andhra Pradesh: A Taste of Tradition</h1>
+      <p>
+        Andhra Pradesh is known for bold flavours, rice-based meals, temple traditions,
+        classical arts and a warm culture where food is shared with pride.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <div class="credit" aria-label="Project details">
+      <div>
+        <span>Made by</span>
+        <strong>Reuben Sharma</strong>
+      </div>
+      <div>
+        <span>Class</span>
+        <strong>7E</strong>
+      </div>
+      <div>
+        <span>School</span>
+        <strong>K.R. Mangalam World School</strong>
+      </div>
+      <div>
+        <span>Location</span>
+        <strong>Vaishali, Ghaziabad</strong>
+      </div>
+    </div>
+
+    <section>
+      <h2>Food Culture of Andhra Pradesh</h2>
+      <p class="section-intro">
+        The cuisine of Andhra Pradesh is famous for spicy curries, tangy chutneys,
+        fragrant rice dishes and festive sweets. Every region adds its own taste,
+        from coastal seafood to Rayalaseema's fiery recipes.
+      </p>
+
+      <div class="image-stage">
+        <div class="carousel" aria-label="Dynamic image gallery">
+          <div class="dots" aria-hidden="true"></div>
+          <article class="slide active">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pulihora.jpg" alt="Pulihora, a traditional tamarind rice dish" />
+            <div class="slide-caption">
+              <strong>Pulihora</strong>
+              <span>A tangy tamarind rice dish often prepared during festivals and temple occasions.</span>
+            </div>
+          </article>
+          <article class="slide">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/A%20common%20food%20stuff%20White%20rice%20%28andhra%20pradesh%20.%20south%20India%29.JPG" alt="Rice, a staple food of Andhra Pradesh" />
+            <div class="slide-caption">
+              <strong>Rice Meals</strong>
+              <span>Rice is the heart of many Andhra meals, served with dal, pickles, chutneys and curries.</span>
+            </div>
+          </article>
+          <article class="slide">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20pickle.%20a%20side%20dish.JPG" alt="Andhra mango pickle" />
+            <div class="slide-caption">
+              <strong>Pickles and Chutneys</strong>
+              <span>Avakaya mango pickle and gongura chutney show the region's love for strong flavours.</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="facts">
+          <article class="fact">
+            <h3>Spicy and Tangy</h3>
+            <p>Red chillies, tamarind, curry leaves and mustard seeds give Andhra food its special taste.</p>
+          </article>
+          <article class="fact">
+            <h3>Festival Food</h3>
+            <p>Dishes like pulihora, payasam and boorelu are prepared during celebrations and family gatherings.</p>
+          </article>
+          <article class="fact">
+            <h3>Shared with Love</h3>
+            <p>Traditional meals are often served on banana leaves, showing respect for guests and nature.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Traditions and Heritage</h2>
+      <p class="section-intro">
+        Andhra Pradesh has a rich cultural identity shaped by classical dance, temple
+        architecture, handloom weaving, stories, music and colourful festivals.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kuchipudi%20Dance%20Uma%20Muralikrishna.jpg" alt="Kuchipudi classical dance performance" />
+          <div>
+            <h3>Kuchipudi Dance</h3>
+            <p>Kuchipudi is a classical dance form from Andhra Pradesh that combines rhythm, expression and storytelling.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nandi%20Bull%20Lepakshi.jpg" alt="Nandi sculpture at Lepakshi Temple" />
+          <div>
+            <h3>Temple Art</h3>
+            <p>Temples such as Lepakshi show beautiful carvings, sculpture and architecture from the region's history.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kondapalli%20Toys%20%283404488827%29.jpg" alt="Traditional Kondapalli toys" />
+          <div>
+            <h3>Handicrafts</h3>
+            <p>Kondapalli toys and handloom work keep traditional skills alive through colour and creativity.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="message">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kuchipudi%20Dance%20Academy%20Group.jpg" alt="Group Kuchipudi dance performance" />
+      <div>
+        <h2>Preserving Culture with Modern Technology</h2>
+        <p>
+          Culture becomes stronger when young people learn it, share it and protect it.
+          Modern technology can help us record recipes, digitize old stories, create
+          online galleries for art, and teach dance or music through videos and apps.
+          When tradition and technology work together, the heritage of Andhra Pradesh
+          can reach the whole world while staying connected to its roots.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Andhra Pradesh reminds us that preserving culture means respecting the past while using the tools of today.
+    Images: Wikimedia Commons.
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dotsContainer = document.querySelector(".dots");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      currentSlide = index;
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === index);
+      });
+      document.querySelectorAll(".dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === index);
+      });
+    }
+
+    slides.forEach((_, index) => {
+      const button = document.createElement("button");
+      button.className = `dot${index === 0 ? " active" : ""}`;
+      button.type = "button";
+      button.setAttribute("aria-label", `Show image ${index + 1}`);
+      button.addEventListener("click", () => showSlide(index));
+      dotsContainer.appendChild(button);
+    });
+
+    setInterval(() => {
+      showSlide((currentSlide + 1) % slides.length);
+    }, 4200);
+  </script>
+</body>
+</html>
